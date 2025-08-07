@@ -1,0 +1,312 @@
+/**
+ * Notes frontend - Modern, minimal, light theme CSS
+ * Accent: #ffca28, Primary: #1976d2, Secondary: #424242
+ */
+
+:root {
+  --color-primary: #1976d2;
+  --color-secondary: #424242;
+  --color-accent: #ffca28;
+  --color-text: #212121;
+  --color-bg: #fafafa;
+  --color-border: #cfd8dc;
+  --color-shadow: rgba(33, 150, 243, 0.04);
+  --color-danger: #e53935;
+  --sidebar-width: 270px;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+}
+
+.notes-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 1.2rem;
+  gap: 1rem;
+  background: #fff;
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 2px 4px var(--color-shadow);
+  z-index: 9;
+}
+
+.topbar-search {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.4em 0.7em;
+  border-radius: 7px;
+  border: 1px solid var(--color-border);
+  font-size: 1rem;
+  background: #f4f4f4;
+}
+
+.topbar-btn {
+  padding: 0.5em 1.2em;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  color: var(--color-primary);
+  background: var(--color-accent);
+}
+.topbar-btn.accent:hover, .topbar-btn.accent:focus {
+  background: #ffe082;
+  color: #111;
+}
+
+.layout {
+  display: flex;
+  flex: 1 1 0;
+  min-height: 0;
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  background: #fff;
+  border-right: 1px solid var(--color-border);
+  box-shadow: 2px 0 5px var(--color-shadow);
+  height: calc(100vh - 54px);
+  overflow-y: auto;
+}
+
+.note-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.note-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.8em 1em;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  font-size: 1.06rem;
+  transition: background 0.13s, border 0.13s;
+}
+
+.note-list-item.selected, .note-list-item:focus, .note-list-item:hover {
+  background: #e3f2fd;
+  border-left: 3px solid var(--color-primary);
+  outline: none;
+}
+.note-title {
+  flex: 1 1 auto;
+  font-weight: 500;
+}
+
+.delete-btn {
+  border: none;
+  background: transparent;
+  color: var(--color-danger);
+  font-size: 1.1em;
+  cursor: pointer;
+  padding: 0;
+  display: inline;
+  opacity: 0.68;
+  transition: opacity 0.1s;
+}
+.delete-btn:hover,
+.delete-btn:focus {
+  opacity: 1;
+  color: #b71c1c;
+}
+.empty-list {
+  color: #888;
+  padding: 1.5em 1em;
+  text-align: center;
+}
+
+/* MAIN PANEL */
+.main-panel {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 2.4rem;
+  background: var(--color-bg);
+}
+
+.no-note-msg {
+  color: #999;
+  font-size: 1.2rem;
+  margin-top: 3em;
+  text-align: center;
+}
+
+.note-editor {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px var(--color-shadow);
+  padding: 2em 2em 1em 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.note-title-input {
+  width: 100%;
+  font-size: 1.2em;
+  font-weight: 600;
+  padding: 0.5em;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.note-content-input {
+  width: 100%;
+  font-size: 1.05em;
+  line-height: 1.7;
+  min-height: 160px;
+  padding: 0.55em;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  resize: vertical;
+  margin-bottom: 0.5em;
+}
+
+.editor-actions {
+  display: flex;
+  gap: 0.8em;
+  margin-top: 0.8em;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  padding: 0.48em 1.1em;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  background: var(--color-accent);
+  color: var(--color-primary);
+  transition: filter 0.1s, background 0.15s;
+  cursor: pointer;
+  box-shadow: 0 1px 2px 0 var(--color-shadow);
+}
+.action-btn.primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+.action-btn.primary:hover,
+.action-btn.primary:focus {
+  filter: brightness(1.11);
+  background: #1565c0;
+}
+.action-btn.secondary {
+  background: #e0e0e0;
+  color: var(--color-secondary);
+}
+.action-btn.secondary:hover,
+.action-btn.secondary:focus {
+  background: #bdbdbd;
+}
+
+.note-details {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px var(--color-shadow);
+  padding: 2em 2em 1.4em 2em;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.details-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.details-title {
+  font-size: 1.5rem;
+  margin: 0 0 0.35em 0;
+  color: var(--color-primary);
+}
+
+.details-content {
+  font-size: 1.15rem;
+  line-height: 1.54;
+  white-space: pre-wrap;
+  color: var(--color-text);
+  margin-bottom: 1em;
+}
+.details-footer {
+  color: #888;
+  font-size: 0.98em;
+  text-align: right;
+}
+.error-msg {
+  background: #ffe9e9;
+  color: #c00;
+  border-radius: 6px;
+  padding: 0.82em 1.1em;
+  margin-bottom: 1.1em;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .main-panel, .note-details, .note-editor {
+    padding-left: 10px; padding-right: 10px;
+  }
+}
+@media (max-width: 950px) {
+  .layout {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    max-width: 100vw;
+    height: inherit;
+    box-shadow: none;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    min-height: 65px;
+    max-height: 260px;
+  }
+}
+@media (max-width: 600px) {
+  .notes-app, .main-panel, .note-details, .note-editor {
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  .main-panel {
+    padding: 1em !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background: #f7f7f7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e3e3e3;
+  border-radius: 10px;
+  border: 3px solid #f7f7f7;
+}
